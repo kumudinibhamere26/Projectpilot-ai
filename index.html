@@ -1,0 +1,239 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ProjectPilot AI</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f3ff;
+      color: #252044;
+    }
+
+    header {
+      background: white;
+      padding: 20px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e8e4f5;
+    }
+
+    header h2 {
+      color: #7048e8;
+      margin: 0;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 55px 20px 30px;
+    }
+
+    .hero h1 {
+      font-size: 38px;
+      margin-bottom: 12px;
+    }
+
+    .hero span {
+      color: #7048e8;
+    }
+
+    .hero p {
+      color: #655f7a;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 650px;
+      margin: 20px auto 50px;
+      padding: 28px;
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 8px 30px #30206012;
+    }
+
+    label {
+      display: block;
+      margin: 17px 0 7px;
+      font-weight: bold;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #d9d3eb;
+      border-radius: 9px;
+      font-size: 15px;
+      background: white;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 22px;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      background: #7048e8;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #5934c7;
+    }
+
+    #result {
+      display: none;
+      margin-top: 25px;
+      padding: 20px;
+      background: #f0ebff;
+      border-radius: 12px;
+      line-height: 1.7;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #777087;
+      font-size: 13px;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 29px;
+      }
+
+      .container {
+        margin: 15px;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h2>ProjectPilot AI</h2>
+    <span>Learn. Build. Grow.</span>
+  </header>
+
+  <section class="hero">
+    <h1>Turn Your Idea Into a <span>Project</span></h1>
+    <p>
+      Your beginner-friendly guide to planning,
+      building and understanding projects.
+    </p>
+  </section>
+
+  <main class="container">
+    <h2>Let's plan your project</h2>
+    <p>Tell us a little about what you want to build.</p>
+
+    <form id="projectForm">
+      <label for="idea">What do you want to build?</label>
+      <textarea id="idea" placeholder="Example: A student study website"
+        required></textarea>
+
+      <label for="skill">Your current skill level</label>
+      <select id="skill">
+        <option>Complete beginner</option>
+        <option>Basic knowledge</option>
+        <option>Intermediate</option>
+      </select>
+
+      <label for="goal">Your main goal</label>
+      <select id="goal">
+        <option>College project</option>
+        <option>Learn new skills</option>
+        <option>Build my portfolio</option>
+        <option>Explore a startup idea</option>
+      </select>
+
+      <label for="budget">Your budget</label>
+      <select id="budget">
+        <option>₹0 - completely free</option>
+        <option>Small budget</option>
+      </select>
+
+      <label for="device">Device available</label>
+      <select id="device">
+        <option>Android phone only</option>
+        <option>College or personal PC</option>
+        <option>Phone and PC</option>
+      </select>
+
+      <button type="submit">Create My Project Plan</button>
+    </form>
+
+    <section id="result" aria-live="polite"></section>
+  </main>
+
+  <footer>
+    ProjectPilot AI · Your project journey starts here.
+  </footer>
+
+  <script>
+    const form = document.getElementById("projectForm");
+    const result = document.getElementById("result");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const idea = document.getElementById("idea").value.trim();
+      const skill = document.getElementById("skill").value;
+      const goal = document.getElementById("goal").value;
+      const budget = document.getElementById("budget").value;
+      const device = document.getElementById("device").value;
+
+      result.style.display = "block";
+
+      result.innerHTML = `
+        <h2>Your First Project Brief</h2>
+        <p><strong>Your idea:</strong> ${escapeHTML(idea)}</p>
+        <p><strong>Skill level:</strong> ${escapeHTML(skill)}</p>
+        <p><strong>Goal:</strong> ${escapeHTML(goal)}</p>
+        <p><strong>Budget:</strong> ${escapeHTML(budget)}</p>
+        <p><strong>Device:</strong> ${escapeHTML(device)}</p>
+        <h3>Your first steps</h3>
+        <ol>
+          <li>Define the main problem your project solves.</li>
+          <li>Choose the simplest useful first feature.</li>
+          <li>Build and test a small version first.</li>
+        </ol>
+        <p>This is a demo plan. AI-powered personalized guidance
+        will be added in a later stage.</p>
+      `;
+
+      result.scrollIntoView({ behavior: "smooth" });
+    });
+
+    function escapeHTML(text) {
+      return text.replace(/[&<>"']/g, function(char) {
+        const entities = {
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#39;"
+        };
+        return entities[char];
+      });
+    }
+  </script>
+</body>
+</html>
