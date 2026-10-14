@@ -202,22 +202,60 @@
 
       result.style.display = "block";
 
+     
+      const ideaLower = idea.toLowerCase();
+
+      let steps = [];
+
+      if (
+        ideaLower.includes("cake") ||
+        ideaLower.includes("bakery") ||
+        ideaLower.includes("parlor")
+      ) {
+        steps = [
+          "Choose your cake parlor name, logo idea, and colors.",
+          "Create a homepage with your shop name and welcome message.",
+          "Add a cake gallery with photos, names, and prices.",
+          "Add About Us and Contact sections for customers.",
+          "Test the website on your available device."
+        ];
+      } else if (
+        ideaLower.includes("portfolio") ||
+        ideaLower.includes("resume")
+      ) {
+        steps = [
+          "Choose a simple portfolio design.",
+          "Add your introduction, skills, and education.",
+          "Showcase your projects and certificates.",
+          "Add contact information.",
+          "Test the website on your available device."
+        ];
+      } else {
+        steps = [
+          "Identify the problem your project should solve.",
+          "Choose one simple and useful first feature.",
+          "Sketch the main screen and user flow.",
+          "Build a small first version.",
+          "Test it and improve it using feedback."
+        ];
+      }
+
       result.innerHTML = `
-        <h2>Your First Project Brief</h2>
+        <h2>Your Project Brief</h2>
         <p><strong>Your idea:</strong> ${escapeHTML(idea)}</p>
         <p><strong>Skill level:</strong> ${escapeHTML(skill)}</p>
         <p><strong>Goal:</strong> ${escapeHTML(goal)}</p>
         <p><strong>Budget:</strong> ${escapeHTML(budget)}</p>
         <p><strong>Device:</strong> ${escapeHTML(device)}</p>
-        <h3>Your first steps</h3>
+        <h3>Your personalized first steps</h3>
         <ol>
-          <li>Define the main problem your project solves.</li>
-          <li>Choose the simplest useful first feature.</li>
-          <li>Build and test a small version first.</li>
+          ${steps.map(step => `<li>${escapeHTML(step)}</li>`).join("")}
         </ol>
-        <p>This is a demo plan. AI-powered personalized guidance
-        will be added in a later stage.</p>
+        <p><strong>Next goal:</strong> Complete these steps one by one
+        and test your first version before adding more features.</p>
+        <p><em>This is a rule-based demo, not live AI yet.</em></p>
       `;
+
 
       result.scrollIntoView({ behavior: "smooth" });
     });
