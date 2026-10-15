@@ -205,6 +205,10 @@
       const ideaLower = idea.toLowerCase();
 
       let steps = [];
+      
+      const ideaLower = idea.toLowerCase();
+
+      let steps = [];
 
       if (
         ideaLower.includes("cake") ||
@@ -212,10 +216,10 @@
         ideaLower.includes("parlor")
       ) {
         steps = [
-          "Choose your cake parlor name, logo idea, and colors.",
+          "Choose your bakery name, logo idea, and colors.",
           "Create a homepage with your shop name and welcome message.",
           "Add a cake gallery with photos, names, and prices.",
-          "Add About Us and Contact sections for customers.",
+          "Add About Us and Contact sections.",
           "Test the website on your available device."
         ];
       } else if (
@@ -227,18 +231,80 @@
           "Add your introduction, skills, and education.",
           "Showcase your projects and certificates.",
           "Add contact information.",
+          "Test your portfolio on your available device."
+        ];
+      } else if (
+        ideaLower.includes("study") ||
+        ideaLower.includes("education") ||
+        ideaLower.includes("learning") ||
+        ideaLower.includes("student")
+      ) {
+        steps = [
+          "Decide which students your project will help.",
+          "Choose one useful learning feature.",
+          "Design a simple homepage and navigation.",
+          "Add study materials, notes, or learning resources.",
+          "Ask a student to test your project and share feedback."
+        ];
+      } else if (
+        ideaLower.includes("women") ||
+        ideaLower.includes("empowerment") ||
+        ideaLower.includes("ngo")
+      ) {
+        steps = [
+          "Identify the people your project aims to support.",
+          "Choose useful information or services to provide.",
+          "Create a homepage explaining the project's purpose.",
+          "Add trusted resources and contact information.",
+          "Test the website and check that its information is accurate."
+        ];
+      } else if (
+        ideaLower.includes("shopping") ||
+        ideaLower.includes("ecommerce") ||
+        ideaLower.includes("business") ||
+        ideaLower.includes("store")
+      ) {
+        steps = [
+          "Decide what products or services the website will feature.",
+          "Design a homepage for the business.",
+          "Add product or service details and images.",
+          "Create About Us and Contact sections.",
+          "Test the website using sample information."
+        ];
+      } else if (
+        ideaLower.includes("travel") ||
+        ideaLower.includes("tourism") ||
+        ideaLower.includes("trip")
+      ) {
+        steps = [
+          "Decide which destinations your project will cover.",
+          "Design a homepage with featured destinations.",
+          "Add destination details, photos, and travel tips.",
+          "Organize destinations into easy-to-browse sections.",
           "Test the website on your available device."
+        ];
+      } else if (
+        ideaLower.includes("weather")
+      ) {
+        steps = [
+          "Design a simple weather information screen.",
+          "Decide which weather details to display.",
+          "Build the layout using sample weather information.",
+          "Plan how to connect a weather data source later.",
+          "Test the screen on your available device."
         ];
       } else {
         steps = [
           "Identify the problem your project should solve.",
+          "Decide who will use your project.",
           "Choose one simple and useful first feature.",
           "Sketch the main screen and user flow.",
-          "Build a small first version.",
-          "Test it and improve it using feedback."
+          "Build a small first version and test it with feedback."
         ];
       }
-      
+
+
+     
       // Personalize the plan according to skill level
       if (skill.toLowerCase().includes("beginner")) {
         steps.unshift(
