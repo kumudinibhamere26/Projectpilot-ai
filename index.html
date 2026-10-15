@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -239,7 +238,7 @@
           "Test it and improve it using feedback."
         ];
       }
-      <CodeBlock language="javascript" editable>
+      
       // Personalize the plan according to skill level
       if (skill.toLowerCase().includes("beginner")) {
         steps.unshift(
@@ -250,7 +249,8 @@
           "Sketch the layout and main features before building."
         );
       }
-// Keep the project free
+
+      // Keep the project free
       if (
         budget.includes("₹0") ||
         budget.toLowerCase().includes("free")
@@ -259,7 +259,8 @@
           "Use free tools and free-to-use images; skip paid services."
         );
       }
-// Give advice according to the selected device
+
+      // Give advice according to the selected device
       if (device.toLowerCase().includes("android")) {
         steps.push(
           "Edit using GitHub's mobile website and test in your phone browser."
@@ -273,8 +274,6 @@
           "Build and test in a desktop browser using free tools."
         );
       }
-</CodeBlock>
-
       result.innerHTML = `
         <h2>Your Project Brief</h2>
         <p><strong>Your idea:</strong> ${escapeHTML(idea)}</p>
