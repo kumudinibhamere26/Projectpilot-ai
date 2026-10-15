@@ -239,6 +239,41 @@
           "Test it and improve it using feedback."
         ];
       }
+      <CodeBlock language="javascript" editable>
+      // Personalize the plan according to skill level
+      if (skill.toLowerCase().includes("beginner")) {
+        steps.unshift(
+          "Start with one small feature and follow the steps in order."
+        );
+      } else {
+        steps.unshift(
+          "Sketch the layout and main features before building."
+        );
+      }
+// Keep the project free
+      if (
+        budget.includes("₹0") ||
+        budget.toLowerCase().includes("free")
+      ) {
+        steps.push(
+          "Use free tools and free-to-use images; skip paid services."
+        );
+      }
+// Give advice according to the selected device
+      if (device.toLowerCase().includes("android")) {
+        steps.push(
+          "Edit using GitHub's mobile website and test in your phone browser."
+        );
+      } else if (device.toLowerCase().includes("phone and pc")) {
+        steps.push(
+          "Edit on either device and test the website on both phone and PC."
+        );
+      } else if (device.toLowerCase().includes("pc")) {
+        steps.push(
+          "Build and test in a desktop browser using free tools."
+        );
+      }
+</CodeBlock>
 
       result.innerHTML = `
         <h2>Your Project Brief</h2>
