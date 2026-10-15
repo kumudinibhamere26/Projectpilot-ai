@@ -187,186 +187,204 @@
   </footer>
 
   <script>
-    const form = document.getElementById("projectForm");
-    const result = document.getElementById("result");
+    
+const form = document.getElementById("projectForm");
+const result = document.getElementById("result");
 
-    form.addEventListener("submit", function(event) {
-      event.preventDefault();
+form.addEventListener("submit", function(event) {
+  event.preventDefault();
 
-      const idea = document.getElementById("idea").value.trim();
-      const skill = document.getElementById("skill").value;
-      const goal = document.getElementById("goal").value;
-      const budget = document.getElementById("budget").value;
-      const device = document.getElementById("device").value;
+  const idea = document.getElementById("idea").value.trim();
+  const skill = document.getElementById("skill").value;
+  const goal = document.getElementById("goal").value;
+  const budget = document.getElementById("budget").value;
+  const device = document.getElementById("device").value;
 
-      result.style.display = "block";
+  const ideaLower = idea.toLowerCase();
+  let steps = [];
 
-     
-      const ideaLower = idea.toLowerCase();
+  // Bakery projects
+  if (
+    ideaLower.includes("cake") ||
+    ideaLower.includes("bakery") ||
+    ideaLower.includes("parlor")
+  ) {
+    steps = [
+      "Choose your bakery name, logo idea, and colors.",
+      "Create a homepage with your shop name and welcome message.",
+      "Add a cake gallery with photos, names, and prices.",
+      "Add About Us and Contact sections.",
+      "Test the website on your available device."
+    ];
+  }
 
-      let steps = [];
-      if (
-        ideaLower.includes("cake") ||
-        ideaLower.includes("bakery") ||
-        ideaLower.includes("parlor")
-      ) {
-        steps = [
-          "Choose your bakery name, logo idea, and colors.",
-          "Create a homepage with your shop name and welcome message.",
-          "Add a cake gallery with photos, names, and prices.",
-          "Add About Us and Contact sections.",
-          "Test the website on your available device."
-        ];
-      } else if (
-        ideaLower.includes("portfolio") ||
-        ideaLower.includes("resume")
-      ) {
-        steps = [
-          "Choose a simple portfolio design.",
-          "Add your introduction, skills, and education.",
-          "Showcase your projects and certificates.",
-          "Add contact information.",
-          "Test your portfolio on your available device."
-        ];
-      } else if (
-        ideaLower.includes("study") ||
-        ideaLower.includes("education") ||
-        ideaLower.includes("learning") ||
-        ideaLower.includes("student")
-      ) {
-        steps = [
-          "Decide which students your project will help.",
-          "Choose one useful learning feature.",
-          "Design a simple homepage and navigation.",
-          "Add study materials, notes, or learning resources.",
-          "Ask a student to test your project and share feedback."
-        ];
-        } else if (
-        ideaLower.includes("women") ||
-        ideaLower.includes("empowerment") ||
-        ideaLower.includes("ngo")
-      ) {
-        steps = [
-          "Identify the people your project aims to support.",
-          "Choose useful information or services to provide.",
-          "Create a homepage explaining the project's purpose.",
-          "Add trusted resources and contact information.",
-          "Test the website and check that its information is accurate."
-        ];
-        } else if (
-        ideaLower.includes("shopping") ||
-        ideaLower.includes("ecommerce") ||
-        ideaLower.includes("business") ||
-        ideaLower.includes("store")
-      ) {
-        steps = [
-          "Decide what products or services the website will feature.",
-          "Design a homepage for the business.",
-          "Add product or service details and images.",
-          "Create About Us and Contact sections.",
-          "Test the website using sample information."
-        ];
-      } else if (
-        ideaLower.includes("travel") ||
-        ideaLower.includes("tourism") ||
-        ideaLower.includes("trip")
-      ) {
-        steps = [
-          "Decide which destinations your project will cover.",
-          "Design a homepage with featured destinations.",
-          "Add destination details, photos, and travel tips.",
-          "Organize destinations into easy-to-browse sections.",
-          "Test the website on your available device."
-        ];
-      } else if (
-        ideaLower.includes("weather")
-      ) {
-        steps = [
-          "Design a simple weather information screen.",
-          "Decide which weather details to display.",
-          "Build the layout using sample weather information.",
-          "Plan how to connect a weather data source later.",
-          "Test the screen on your available device."
-        ];
-      } else {
-        steps = [
-          "Identify the problem your project should solve.",
-          "Decide who will use your project.",
-          "Choose one simple and useful first feature.",
-          "Sketch the main screen and user flow.",
-          "Build a small first version and test it with feedback."
-        ];
-      }
+  // Portfolio projects
+  else if (
+    ideaLower.includes("portfolio") ||
+    ideaLower.includes("resume")
+  ) {
+    steps = [
+      "Choose a simple portfolio design.",
+      "Add your introduction, skills, and education.",
+      "Showcase your projects and certificates.",
+      "Add contact information.",
+      "Test your portfolio on your available device."
+    ];
+  }
 
+  // Study and education projects
+  else if (
+    ideaLower.includes("study") ||
+    ideaLower.includes("education") ||
+    ideaLower.includes("learning") ||
+    ideaLower.includes("student")
+  ) {
+    steps = [
+      "Decide which students your project will help.",
+      "Choose one useful learning feature.",
+      "Design a simple homepage and navigation.",
+      "Add study materials, notes, or learning resources.",
+      "Ask a student to test your project and share feedback."
+    ];
+  }
 
-     
-      // Personalize the plan according to skill level
-      if (skill.toLowerCase().includes("beginner")) {
-        steps.unshift(
-          "Start with one small feature and follow the steps in order."
-        );
-      } else {
-        steps.unshift(
-          "Sketch the layout and main features before building."
-        );
-      }
+  // Women empowerment and NGO projects
+  else if (
+    ideaLower.includes("women") ||
+    ideaLower.includes("empowerment") ||
+    ideaLower.includes("ngo")
+  ) {
+    steps = [
+      "Identify the people your project aims to support.",
+      "Choose useful information or services to provide.",
+      "Create a homepage explaining the project's purpose.",
+      "Add trusted resources and contact information.",
+      "Test the website and check that its information is accurate."
+    ];
+  }
 
-      // Keep the project free
-      if (
-        budget.includes("₹0") ||
-        budget.toLowerCase().includes("free")
-      ) {
-        steps.push(
-          "Use free tools and free-to-use images; skip paid services."
-        );
-      }
+  // Shopping and business projects
+  else if (
+    ideaLower.includes("shopping") ||
+    ideaLower.includes("ecommerce") ||
+    ideaLower.includes("business") ||
+    ideaLower.includes("store")
+  ) {
+    steps = [
+      "Decide what products or services the website will feature.",
+      "Design a homepage for the business.",
+      "Add product or service details and images.",
+      "Create About Us and Contact sections.",
+      "Test the website using sample information."
+    ];
+  }
 
-      // Give advice according to the selected device
-      if (device.toLowerCase().includes("android")) {
-        steps.push(
-          "Edit using GitHub's mobile website and test in your phone browser."
-        );
-      } else if (device.toLowerCase().includes("phone and pc")) {
-        steps.push(
-          "Edit on either device and test the website on both phone and PC."
-        );
-      } else if (device.toLowerCase().includes("pc")) {
-        steps.push(
-          "Build and test in a desktop browser using free tools."
-        );
-      }
-      result.innerHTML = `
-        <h2>Your Project Brief</h2>
-        <p><strong>Your idea:</strong> ${escapeHTML(idea)}</p>
-        <p><strong>Skill level:</strong> ${escapeHTML(skill)}</p>
-        <p><strong>Goal:</strong> ${escapeHTML(goal)}</p>
-        <p><strong>Budget:</strong> ${escapeHTML(budget)}</p>
-        <p><strong>Device:</strong> ${escapeHTML(device)}</p>
-        <h3>Your personalized first steps</h3>
-        <ol>
-          ${steps.map(step => `<li>${escapeHTML(step)}</li>`).join("")}
-        </ol>
-        <p><strong>Next goal:</strong> Complete these steps one by one
-        and test your first version before adding more features.</p>
-        <p><em>This is a rule-based demo, not live AI yet.</em></p>
-      `;
+  // Travel projects
+  else if (
+    ideaLower.includes("travel") ||
+    ideaLower.includes("tourism") ||
+    ideaLower.includes("trip")
+  ) {
+    steps = [
+      "Decide which destinations your project will cover.",
+      "Design a homepage with featured destinations.",
+      "Add destination details, photos, and travel tips.",
+      "Organize destinations into easy-to-browse sections.",
+      "Test the website on your available device."
+    ];
+  }
 
+  // Weather projects
+  else if (ideaLower.includes("weather")) {
+    steps = [
+      "Design a simple weather information screen.",
+      "Decide which weather details to display.",
+      "Build the layout using sample weather information.",
+      "Plan how to connect a weather data source later.",
+      "Test the screen on your available device."
+    ];
+  }
 
-      result.scrollIntoView({ behavior: "smooth" });
-    });
+  // General projects
+  else {
+    steps = [
+      "Identify the problem your project should solve.",
+      "Decide who will use your project.",
+      "Choose one simple and useful first feature.",
+      "Sketch the main screen and user flow.",
+      "Build a small first version and test it with feedback."
+    ];
+  }
 
-    function escapeHTML(text) {
-      return text.replace(/[&<>"']/g, function(char) {
-        const entities = {
-          "&": "&amp;",
-          "<": "&lt;",
-          ">": "&gt;",
-          '"': "&quot;",
-          "'": "&#39;"
-        };
-        return entities[char];
-      });
-    }
+  // Personalize according to skill level
+  if (skill.toLowerCase().includes("beginner")) {
+    steps.unshift(
+      "Start with one small feature and follow the steps in order."
+    );
+  } else {
+    steps.unshift(
+      "Sketch the layout and main features before building."
+    );
+  }
+
+  // Budget advice
+  if (
+    budget.includes("₹0") ||
+    budget.toLowerCase().includes("free")
+  ) {
+    steps.push(
+      "Use free tools and free-to-use images; skip paid services."
+    );
+  }
+
+  // Device advice
+  if (device.toLowerCase().includes("android")) {
+    steps.push(
+      "Edit using GitHub's mobile website and test in your phone browser."
+    );
+  } else if (device.toLowerCase().includes("phone and pc")) {
+    steps.push(
+      "Edit on either device and test the website on both phone and PC."
+    );
+  } else if (device.toLowerCase().includes("pc")) {
+    steps.push(
+      "Build and test in a desktop browser using free tools."
+    );
+  }
+
+  // Display the result
+  result.innerHTML = `
+    <h2>Your Project Brief</h2>
+    <p><strong>Your idea:</strong> ${escapeHTML(idea)}</p>
+    <p><strong>Skill level:</strong> ${escapeHTML(skill)}</p>
+    <p><strong>Goal:</strong> ${escapeHTML(goal)}</p>
+    <p><strong>Budget:</strong> ${escapeHTML(budget)}</p>
+    <p><strong>Device:</strong> ${escapeHTML(device)}</p>
+    <h3>Your personalized first steps</h3>
+    <ol>
+      ${steps.map(step => `<li>${escapeHTML(step)}</li>`).join("")}
+    </ol>
+    <p><strong>Next goal:</strong> Complete these steps one by one
+    and test your first version before adding more features.</p>
+    <p><em>This is a rule-based demo, not live AI yet.</em></p>
+  `;
+
+  result.style.display = "block";
+  result.scrollIntoView({ behavior: "smooth" });
+});
+
+function escapeHTML(text) {
+  return text.replace(/[&<>"']/g, function(char) {
+    const entities = {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    };
+    return entities[char];
+  });
+}        
   </script>
 </body>
 </html>
